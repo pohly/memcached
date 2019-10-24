@@ -5,13 +5,14 @@ import (
 	"strings"
 	"time"
 
+	api "kubedb.dev/apimachinery/apis/kubedb/v1alpha1"
+	"kubedb.dev/memcached/pkg/controller"
+
 	"github.com/bradfitz/gomemcache/memcache"
 	. "github.com/onsi/gomega"
 	core "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"kmodules.xyz/client-go/tools/portforward"
-	api "kubedb.dev/apimachinery/apis/kubedb/v1alpha1"
-	"kubedb.dev/memcached/pkg/controller"
 )
 
 func (f *Framework) GetDatabasePod(meta metav1.ObjectMeta) (*core.Pod, error) {
@@ -64,10 +65,7 @@ func (f *Framework) EventuallySetItem(meta metav1.ObjectMeta, key, value string)
 			defer f.tunnel.Close()
 
 			err = client.Set(&memcache.Item{Key: key, Value: []byte(value)})
-			if err != nil {
-				return false
-			}
-			return true
+			return err == nil
 		},
 		time.Minute*5,
 		time.Second*5,
