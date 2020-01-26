@@ -5,6 +5,7 @@ go 1.12
 require (
 	github.com/appscode/go v0.0.0-20191119085241-0887d8ec2ecc
 	github.com/bradfitz/gomemcache v0.0.0-20190913173617-a41fca850d0b
+	github.com/codeskyblue/go-sh v0.0.0-20190412065543-76bd3d59ff27
 	github.com/coreos/prometheus-operator v0.34.0
 	github.com/onsi/ginkgo v1.8.0
 	github.com/onsi/gomega v1.5.0
@@ -17,12 +18,12 @@ require (
 	k8s.io/apiserver v0.0.0-20191114103151-9ca1dc586682
 	k8s.io/client-go v12.0.0+incompatible
 	k8s.io/kube-aggregator v0.0.0-20191114103820-f023614fb9ea
-	kmodules.xyz/client-go v0.0.0-20200108114229-70ba8841e60f
+	kmodules.xyz/client-go v0.0.0-20200125212626-a094b2ba24c6
 	kmodules.xyz/custom-resources v0.0.0-20191130062942-f41b54f62419
-	kmodules.xyz/monitoring-agent-api v0.0.0-20191224204126-ee69caffab6c
+	kmodules.xyz/monitoring-agent-api v0.0.0-20200125202117-d3b3e33ce41f
 	kmodules.xyz/offshoot-api v0.0.0-20200103145223-2c4f520520d2
 	kmodules.xyz/webhook-runtime v0.0.0-20191127075323-d4bfdee6974d
-	kubedb.dev/apimachinery v0.13.0-rc.2.0.20200111104535-722f0b216a67
+	kubedb.dev/apimachinery v0.13.0-rc.3.0.20200126044229-b32bf152d9ca
 )
 
 replace (
