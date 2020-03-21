@@ -1,5 +1,30 @@
 # Change Log
 
+## [Unreleased](https://github.com/kubedb/memcached/tree/HEAD)
+
+[Full Changelog](https://github.com/kubedb/memcached/compare/v0.6.0-rc.1...HEAD)
+
+**Merged pull requests:**
+
+- Use stash.appscode.dev/apimachinery@v0.9.0-rc.6 [\#143](https://github.com/kubedb/memcached/pull/143) ([tamalsaha](https://github.com/tamalsaha))
+- Introduce spec.halted and removed dormant crd [\#142](https://github.com/kubedb/memcached/pull/142) ([the-redback](https://github.com/the-redback))
+- Refactor CI pipeline to run build once [\#141](https://github.com/kubedb/memcached/pull/141) ([tamalsaha](https://github.com/tamalsaha))
+- Update kubernetes client-go to 1.16.3 [\#140](https://github.com/kubedb/memcached/pull/140) ([tamalsaha](https://github.com/tamalsaha))
+- Use charts to install operator [\#139](https://github.com/kubedb/memcached/pull/139) ([tamalsaha](https://github.com/tamalsaha))
+- Moved out docker files and added matrix github actions ci/cd [\#138](https://github.com/kubedb/memcached/pull/138) ([the-redback](https://github.com/the-redback))
+- Add license header to files [\#137](https://github.com/kubedb/memcached/pull/137) ([tamalsaha](https://github.com/tamalsaha))
+- Enable make ci [\#136](https://github.com/kubedb/memcached/pull/136) ([tamalsaha](https://github.com/tamalsaha))
+- Remove EnableStatusSubresource [\#135](https://github.com/kubedb/memcached/pull/135) ([tamalsaha](https://github.com/tamalsaha))
+
+## [v0.6.0-rc.1](https://github.com/kubedb/memcached/tree/v0.6.0-rc.1) (2019-10-07)
+[Full Changelog](https://github.com/kubedb/memcached/compare/v0.6.0-rc.0...v0.6.0-rc.1)
+
+**Merged pull requests:**
+
+- Prepare v0.6.0-rc.1 release [\#134](https://github.com/kubedb/memcached/pull/134) ([tamalsaha](https://github.com/tamalsaha))
+- Validate DBVersionSpecs and fixed broken build [\#133](https://github.com/kubedb/memcached/pull/133) ([the-redback](https://github.com/the-redback))
+- Run e2e tests using GitHub actions [\#132](https://github.com/kubedb/memcached/pull/132) ([tamalsaha](https://github.com/tamalsaha))
+
 ## [v0.6.0-rc.0](https://github.com/kubedb/memcached/tree/v0.6.0-rc.0) (2019-08-22)
 [Full Changelog](https://github.com/kubedb/memcached/compare/0.5.0...v0.6.0-rc.0)
 
