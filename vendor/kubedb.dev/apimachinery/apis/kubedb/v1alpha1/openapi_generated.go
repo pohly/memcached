@@ -23,7 +23,6 @@ limitations under the License.
 package v1alpha1
 
 import (
-	types "github.com/appscode/go/encoding/json/types"
 	spec "github.com/go-openapi/spec"
 	resource "k8s.io/apimachinery/pkg/api/resource"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -34,7 +33,6 @@ import (
 
 func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenAPIDefinition {
 	return map[string]common.OpenAPIDefinition{
-		"github.com/appscode/go/encoding/json/types.IntHash":                          schema_go_encoding_json_types_IntHash(ref),
 		"k8s.io/api/apps/v1.ControllerRevision":                                       schema_k8sio_api_apps_v1_ControllerRevision(ref),
 		"k8s.io/api/apps/v1.ControllerRevisionList":                                   schema_k8sio_api_apps_v1_ControllerRevisionList(ref),
 		"k8s.io/api/apps/v1.DaemonSet":                                                schema_k8sio_api_apps_v1_DaemonSet(ref),
@@ -459,18 +457,6 @@ func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenA
 		"kubedb.dev/apimachinery/apis/kubedb/v1alpha1.proxysqlStatsService":           schema_apimachinery_apis_kubedb_v1alpha1_proxysqlStatsService(ref),
 		"kubedb.dev/apimachinery/apis/kubedb/v1alpha1.redisApp":                       schema_apimachinery_apis_kubedb_v1alpha1_redisApp(ref),
 		"kubedb.dev/apimachinery/apis/kubedb/v1alpha1.redisStatsService":              schema_apimachinery_apis_kubedb_v1alpha1_redisStatsService(ref),
-	}
-}
-
-func schema_go_encoding_json_types_IntHash(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Description: "IntHash represents as int64 Generation and string Hash. It is json serialized into <int64>$<hash_string>.",
-				Type:        types.IntHash{}.OpenAPISchemaType(),
-				Format:      types.IntHash{}.OpenAPISchemaFormat(),
-			},
-		},
 	}
 }
 
@@ -19272,6 +19258,18 @@ func schema_apimachinery_apis_kubedb_v1alpha1_MongoDBSpec(ref common.ReferenceCa
 							Ref:         ref("k8s.io/api/apps/v1.StatefulSetUpdateStrategy"),
 						},
 					},
+					"tls": {
+						SchemaProps: spec.SchemaProps{
+							Description: "TLS contains tls configurations for client and server.",
+							Ref:         ref("kubedb.dev/apimachinery/apis/kubedb/v1alpha1.TLSConfig"),
+						},
+					},
+					"keyFile": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Secret for KeyFile. Contains keyfile `key.txt` if spec.clusterAuthMode == keyFile || sendKeyFile",
+							Ref:         ref("k8s.io/api/core/v1.SecretVolumeSource"),
+						},
+					},
 					"paused": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Indicates that the database is paused and controller will not sync any changes made to this spec.",
@@ -19284,18 +19282,6 @@ func schema_apimachinery_apis_kubedb_v1alpha1_MongoDBSpec(ref common.ReferenceCa
 							Description: "Indicates that the database is halted and all offshoot Kubernetes resources except PVCs are deleted.",
 							Type:        []string{"boolean"},
 							Format:      "",
-						},
-					},
-					"tls": {
-						SchemaProps: spec.SchemaProps{
-							Description: "TLS contains tls configurations for client and server.",
-							Ref:         ref("kubedb.dev/apimachinery/apis/kubedb/v1alpha1.TLSConfig"),
-						},
-					},
-					"keyFile": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Secret for KeyFile. Contains keyfile `key.txt` if spec.clusterAuthMode == keyFile || sendKeyFile",
-							Ref:         ref("k8s.io/api/core/v1.SecretVolumeSource"),
 						},
 					},
 					"terminationPolicy": {
@@ -19575,6 +19561,19 @@ func schema_apimachinery_apis_kubedb_v1alpha1_MySQLSpec(ref common.ReferenceCall
 							Ref:         ref("k8s.io/api/apps/v1.StatefulSetUpdateStrategy"),
 						},
 					},
+					"requireSSL": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Indicates that the database server need to be encrypted connections(ssl)",
+							Type:        []string{"boolean"},
+							Format:      "",
+						},
+					},
+					"tls": {
+						SchemaProps: spec.SchemaProps{
+							Description: "TLS contains tls configurations for client and server.",
+							Ref:         ref("kubedb.dev/apimachinery/apis/kubedb/v1alpha1.TLSConfig"),
+						},
+					},
 					"paused": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Indicates that the database is paused and controller will not sync any changes made to this spec.",
@@ -19587,12 +19586,6 @@ func schema_apimachinery_apis_kubedb_v1alpha1_MySQLSpec(ref common.ReferenceCall
 							Description: "Indicates that the database is halted and all offshoot Kubernetes resources except PVCs are deleted.",
 							Type:        []string{"boolean"},
 							Format:      "",
-						},
-					},
-					"tls": {
-						SchemaProps: spec.SchemaProps{
-							Description: "TLS contains tls configurations for client and server.",
-							Ref:         ref("kubedb.dev/apimachinery/apis/kubedb/v1alpha1.TLSConfig"),
 						},
 					},
 					"terminationPolicy": {
