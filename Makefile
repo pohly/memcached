@@ -285,9 +285,10 @@ e2e-tests: $(BUILD_DIRS)
 	    -v $$(pwd)/.go/bin/$(OS)_$(ARCH):/go/bin                \
 	    -v $$(pwd)/.go/bin/$(OS)_$(ARCH):/go/bin/$(OS)_$(ARCH)  \
 	    -v $$(pwd)/.go/cache:/.cache                            \
+	    -v $(KUBECONFIG):/.kube.config \
 	    --env HTTP_PROXY=$(HTTP_PROXY)                          \
 	    --env HTTPS_PROXY=$(HTTPS_PROXY)                        \
-	    --env KUBECONFIG=$(KUBECONFIG)                          \
+	    --env KUBECONFIG=/.kube.config                          \
 	    --env-file=$$(pwd)/hack/config/.env                     \
 	    $(BUILD_IMAGE)                                          \
 	    /bin/bash -c "                                          \
@@ -296,7 +297,6 @@ e2e-tests: $(BUILD_DIRS)
 	        VERSION=$(VERSION)                                  \
 	        DOCKER_REGISTRY=$(REGISTRY)                         \
 	        TAG=$(TAG)                                          \
-	        KUBECONFIG=$${KUBECONFIG#$(HOME)}                   \
 	        GINKGO_ARGS='$(GINKGO_ARGS)'                        \
 	        TEST_ARGS='$(TEST_ARGS)'                            \
 	        ./hack/e2e.sh                                       \
