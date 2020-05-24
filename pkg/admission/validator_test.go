@@ -245,7 +245,7 @@ func sampleMemcached() api.Memcached {
 				Type: apps.RollingUpdateDeploymentStrategyType,
 			},
 			TerminationPolicy: api.TerminationPolicyDoNotTerminate,
-			DataSource: &v1.VolumeSource{
+			DataVolume: &v1.VolumeSource{
 				CSI: &v1.CSIVolumeSource{
 					Driver: "foobar.example.com",
 				},
